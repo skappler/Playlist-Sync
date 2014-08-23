@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from os import listdir, getcwd
 from os.path import join, relpath, dirname, exists
 from shutil import copy2
@@ -58,7 +60,6 @@ def main():
 
     playlist = parseM3U(sys.argv[3])
 
-
     # delete files no longer wanted
     for f in files:
         if not f in playlist:
@@ -77,7 +78,8 @@ def main():
                 hashNew = getMD5(join(sys.argv[2],f))
                 if hashOrg == hashNew:
                     continue
-        
+            else:
+                continue
         
         dirs = join(sys.argv[1],dirname(f))
         if not exists(dirs):
